@@ -58,7 +58,7 @@ class LoginController extends Controller
         ];
     }
     public function logout(Request $request) {
-        session_start();
+//        session_start();
         $user = Auth::user()->name;
         $_SESSION["name"] = $user;
         // remove all session variables
