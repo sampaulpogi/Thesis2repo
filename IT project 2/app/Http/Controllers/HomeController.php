@@ -119,28 +119,98 @@ class HomeController extends Controller
 
     }
 
-//    public function getEmployeesLeaveLedger(){
-//        $employeedataf = DB::table('employee')
-//            ->join('familybackground','employee.emp_id', '=', 'familybackground.emp_id')
-//            ->where('familybackground.emp_id', $emp_id)
-//            ->first();
-//
-//        $employeeleaveledger = DB::table('employee')
-//            ->join('children', 'employee.emp_id', '=', 'children.emp_id')
-//            ->where('children.emp_id', $emp_id)
-//            ->get();
-//
-//        $_SESSION['employeeID'] = $emp_id;
-//
-//
-//        return view ('HR.PendingLeaves') ->with ("employeeleaveledger", $employeeleaveledger)->with ("employeedataf", $employeedataf);
-//
-//    }
+    public function getEmployeesLeaveLedger(){
+        $employees = DB::table('employee As a')
+            ->join('applicationforleave As b', 'a.emp_id', '=', 'b.emp_id')
+            ->select('a.emp_id','a.givenname', 'a.middlename', 'a.lastname', 'b.inclusiveDates', 'b.dateOfApplication', 'b.typeOfLeave', 'b.app_id')
+            ->get();
+        return view ('HR.PendingLeaves')->with("employees", $employees);
+    }
+
+    public function getDetermineLeave($emp_id,$app_id){
+        $employeedataf = DB::table('employee')
+            ->join('familybackground','employee.emp_id', '=', 'familybackground.emp_id')
+            ->where('familybackground.emp_id', $emp_id)
+            ->first();
+
+        $employeependingleave = DB::table('employee')
+            ->join('applicationforleave','employee.emp_id', '=', 'applicationforleave.emp_id')
+            ->where('applicationforleave.emp_id', $emp_id)
+            ->where ('applicationforleave.app_id', $app_id)
+            ->first();
+
+//        $_SESSION['appleaveID'] = $app_id;
+
+        $_SESSION['employeeID'] = $emp_id;
+
+        return view ('HR.DetermineLeaves') ->with ("employeedataf", $employeedataf) ->with ("employeependingleave", $employeependingleave);
+
+    }
+
+    public function rejectLeave(){
+
+        $employees = DB::table('employee As a')
+            ->join('applicationforleave As b', 'a.emp_id', '=', 'b.emp_id')
+            ->select('a.emp_id','a.givenname', 'a.middlename', 'a.lastname', 'b.inclusiveDates', 'b.dateOfApplication', 'b.typeOfLeave', 'b.app_id')
+            ->get();
+
+        $app_id = $_SESSION['appleaveID'];
+
+        DB::table('applicationforleave')->where('applicationforleave.app_id', $app_id)->delete();
+
+        return view ('HR.PendingLeaves')->with("employees", $employees);
+
+    }
+
+    public function acceptLeave(Request $req){
+
+        $employees = DB::table('employee As a')
+            ->join('applicationforleave As b', 'a.emp_id', '=', 'b.emp_id')
+            ->select('a.emp_id','a.givenname', 'a.middlename', 'a.lastname', 'b.inclusiveDates', 'b.dateOfApplication', 'b.typeOfLeave', 'b.app_id')
+            ->get();
+
+//        return view ('HR.PendingLeaves')->with("employees", $employees);
+//        if ($employees->typeOfLeave == 'Vacation') {
+            $emp_id = $_SESSION['employeeID'];
+            $vacationNoOfAbsence = $req->input('vacationNoOfAbsence');
+            $tardiness = $req->input('tardiness');
+            $vacationEarned = '1.25';
+            $vacationBalance = $req->input('vacationBalance');
+            $vacationAbsencesWithPay = $req->input('vacationAbsencesWithPay');
+            $vacationAbsencesWithoutPay = $req->input('vacationAbsencesWithoutPay');
+//            $sickNoOfAbsenceTardiness = null;
+//            $sickEarned = null;
+//            $sickBalance = null;
+//            $sickAbsencesWithPay = null;
+//            $sickAbsencesWithoutPay = null;
+//        }elseif(($employees->typeOfLeave == 'Sick')){
+//            $vacationNoOfAbsence = null;
+//            $tardiness = null;
+//            $vacationEarned = null;
+//            $vacationBalance = null;
+//            $vacationAbsencesWithPay = null;
+//            $vacationAbsencesWithoutPay = null;
+            $sickNoOfAbsenceTardiness = $req->input('sickNoOfAbsenceTardiness');
+            $sickEarned = '1.25';
+            $sickBalance = $req->input('sickBalance');
+            $sickAbsenceWithPay = $req->input('sickAbsencesWithPay');
+            $sickAbsenceWithoutPay = $req->input('sickAbsencesWithoutPay');
+
+//            }
+
+        $data = array( "emp_id"=>$emp_id, "vacationNoOfAbsence"=>$vacationNoOfAbsence, "tardiness"=>$tardiness, "vacationEarned"=>$vacationEarned, "vacationBalance"=>$vacationBalance,"vacationAbsencesWithPay"=>$vacationAbsencesWithPay,"vacationAbsencesWithoutPay"=>$vacationAbsencesWithoutPay, "sickNoOfAbsenceTardiness"=>$sickNoOfAbsenceTardiness,"sickEarned"=>$sickEarned,"sickBalance"=>$sickBalance,"sickAbsenceWithPay"=>$sickAbsenceWithPay,"sickAbsenceWithoutPay"=>$sickAbsenceWithoutPay);
+
+        DB::table('leave_ledger')->insert($data);
+
+        return view ('HR.PendingLeaves')->with("employees", $employees);
+
+    }
 
 //$_POST['typeOfLeave']
     /*------Employee Controller------*/
     public function getPendingLeaves(Request $req){
         $app_id = "28051";
+        $ledger_id = "28051";
         $emp_id = Auth::user()->username;
         $typeOfLeave = Input::get('typeOfLeave');
         if ($typeOfLeave == 'Sick') {
@@ -151,8 +221,9 @@ class HomeController extends Controller
             $tosick = $req->input('tosick');
             if ($tosick == '' || $tosick == null) {
                 $inclusiveDates = $req->input('fromsick');
+            }else {
+                $inclusiveDates = $req->input('fromsick') . '-' . $req->input('tosick');
             }
-            $inclusiveDates = $req->input('fromsick') . '-' . $req->input('tosick');
             $inhospital = $req->input('inhospital');
             $outPatient = $req->input('outPatient');
             if ($outPatient == '' || $outPatient == null) {
@@ -182,8 +253,8 @@ class HomeController extends Controller
             }
         }
 
-        $dateOfApplication = date("Y-M-d");
-        $status = "Accepted";
+        $dateOfApplication = date("Y/M/d");
+        $status = "Pending";
 
         $data = array( "emp_id"=>$emp_id, "typeOfLeave"=>$typeOfLeave, "location"=>$location,"sickInfo"=>$reasons,"noOfWorkingDays"=>$numberOfWorkingDays, "inclusiveDates"=>$inclusiveDates,"dateOfApplication"=>$dateOfApplication,"status"=>$status);
 

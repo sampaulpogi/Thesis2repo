@@ -19,10 +19,13 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/PendingLeaves', 'HomeController@getEmployeesLeaveLedger');
-Route::get('/PendingLeaves', function () {
-    return view('HR/PendingLeaves');
-});
+Route::get('/PendingLeaves', 'HomeController@getEmployeesLeaveLedger');
+Route::get('/DetermineLeaves/{emp_id}+{app_id}', 'HomeController@getDetermineLeave');
+Route::post('/AcceptLeaves', 'HomeController@acceptLeave');
+Route::get('/DeleteLeave', 'HomeController@rejectLeave');
+//Route::get('/PendingLeaves', function () {
+//    return view('HR/PendingLeaves');
+//});
 Route::get('/RandF', function () {
     return view('HR/RandF');
 });
@@ -46,10 +49,10 @@ Route::get('/empservrec', 'HomeController@getServiceRecord');
 //Route::get('/empservrec', function () {
 //    return view('Employee/empservrec');
 //});
-//Route::get('/empleavesum', 'HomeController@getLeaveLedger');
-Route::get('/empleavesum', function () {
-    return view('Employee/empleavesum');
-});
+Route::get('/empleavesum', 'HomeController@getLeaveLedger');
+//Route::get('/empleavesum', function () {
+//    return view('Employee/empleavesum');
+//});
 
 Route::get('/empleaveform', function () {
     return view('Employee/empleaveform');
