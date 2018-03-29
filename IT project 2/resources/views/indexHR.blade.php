@@ -1,5 +1,5 @@
 ﻿<?php
-//session_start();
+session_start();
 use Illuminate\Support\Facades\Auth;
 $user = Auth::user()->name;
 $_SESSION["name"] = $user;

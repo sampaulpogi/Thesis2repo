@@ -1,41 +1,20 @@
 ﻿<?php
 // Start the session
-if(!isset($_SESSION))
-{
-    session_start();
-    if(isset($_SESSION['name'])){
-        print $_SESSION['time'] - time();
-        if ((time() - $_SESSION['time']) > 900){
+session_start();
+if(isset($_SESSION['name'])){
+    if ((time() - $_SESSION['time']) > 900){
 
-
-// session timed out
+        // session timed out
 //        session_unset();     // unset $_SESSION variable for the run-time
 //        session_destroy();   // destroy session data in storage
-            echo '<a href="/logout" class="btn btn-danger square-btn-adjust">Please Login</a>';
-            return redirect()->route('logout');
-
-        }
-    }else{
         echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
         return redirect()->route('logout');
+
     }
 }else{
-    if(isset($_SESSION['name'])){
-        print $_SESSION['time'] - time();
-        if ((time() - $_SESSION['time']) > 900){
-
-
-// session timed out
-//        session_unset();     // unset $_SESSION variable for the run-time
-//        session_destroy();   // destroy session data in storage
-            echo '<a href="/logout" class="btn btn-danger square-btn-adjust">Please Login</a>';
-            return redirect()->route('logout');
-
-        }
-    }else{
-        echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
-        return redirect()->route('logout');
-    }}
+    echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
+    return redirect()->route('logout');
+}
 ?>
         <!DOCTYPE html>
 <html>
@@ -109,77 +88,32 @@ font-size: 16px;"> Today : <?php echo date("M d, Y")?>&nbsp; <a href="/logout" c
                     <h2>Reports</h2>
                 </div>
             </div>
-            <!-- /. ROW  -->
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Plantilla
                         </div>
-                        <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
-                        </div>
                         <div class="panel-footer">
-                            <a href="#" class="btn btn-info btn-sm">Generate</a>
+                            <a href="/hrPlantilla" class="btn btn-info btn-sm">Generate</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Personal Data Sheet
+                            Notice of Salary Adjustment (NOSA)
                         </div>
-                        <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
-                        </div>
+                        <form>
+                            Salary Adjustment: <input type="number" name="nosa"><br>
+                        </form>
                         <div class="panel-footer">
                             <a href="#" class="btn btn-info btn-sm">Generate</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Service Record
-                        </div>
-                        <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="#" class="btn btn-info btn-sm">Generate</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            NOSA
-                        </div>
-                        <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="#" class="btn btn-info btn-sm">Generate</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            NOSI
-                        </div>
-                        <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="#" class="btn btn-info btn-sm">Generate</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <!-- /. ROW  -->
-            <hr>
+            
             <div class="row">
                 <div class="col-md-12">
                     <h2>Forms</h2>

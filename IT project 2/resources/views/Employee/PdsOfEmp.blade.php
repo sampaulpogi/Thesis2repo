@@ -1,6 +1,6 @@
 <?php
 // Start the session
-//session_start();
+session_start();
 if(isset($_SESSION['name'])){
     if ((time() - $_SESSION['time']) > 900){
 
@@ -94,13 +94,14 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
                             <!-- Begin Personal Information -->
                             <div id="self">
                                 <center><h3 class="name">{{ $employeedataf->givenname }} {{ $employeedataf->middlename }} {{ $employeedataf->lastname}}</h3></center>
-                                <br>
                             </div>
                             <div class="col-md-12">
                                 <br>
                                 <div style="text-align: right">
-
-                                    <button class="btn btn-default" ><a href="/download-pdf2" ><i class=" fa fa-file-text " ></i> Generate</a></button>
+                                    <button class="btn btn-default" ><a href="PdsOfEmp/1/edit"><i class="fa fa-edit "></i> Edit</a></button>
+                                    <button class="btn btn-default" ><a href="/download-pdf2" ><i class=" fa fa-file-text " ></i> Generate</a>
+                                    </button>
+                                </div>
                                 <br>
                                 <div class="col-md-12">
                                     <div class="panel panel-default">
@@ -121,9 +122,6 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
 
                                             <div class="tab-content">
                                                 <div class="tab-pane fade active in" id="page1">
-                                                    <br>
-                                                    <div style="text-align: right">
-                                                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModalEditP1"><i class="fa fa-edit "></i> Edit</button></div>
                                                     <br>
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading">
@@ -283,9 +281,6 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
 
                                                 <div class="tab-pane fade" id="page2">
                                                     <br>
-                                                    <div style="text-align: right">
-                                                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModalEditP2"><i class="fa fa-edit "></i> Edit</button></div>
-                                                    <br>
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading">
                                                             <h4 class="panel-title">
@@ -381,9 +376,6 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
 
 
                                                 <div class="tab-pane fade" id="page3">
-                                                    <br>
-                                                    <div style="text-align: right">
-                                                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModalEditP3"><i class="fa fa-edit "></i> Edit</button></div>
                                                     <br>
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading">
@@ -487,7 +479,7 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
 
                                                 <!---End Of Page3 -->
 
-                                                <div class="tab-pane fade" id="page4">
+                                                <d  iv class="tab-pane fade" id="page4">
                                                     <h4>PDS Questionaire</h4>
                                                     <table>
                                                         <td>1.) Are you related by consanguinity or affinity to the appointing or recommending authority, or the chief of bureau or office to the person who has immediate supervision over you in the office Bureau or Department where you will be appointed,</td>
@@ -757,521 +749,20 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                             <!-- End Personal Information -->
-                            <!--Modal Content -->
-                            <!--Modal page1 -->
-                            <div class="modal fade" id="myModalEditP1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Edit Personal Data Sheet</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <table>
-                                                <h4>Personal Information</h4>
-                                                <tr>
-                                                    <td class ="question">First Name:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Date of Birth:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Middle Name:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Place of Birth:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Last Name:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Civil Status:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Extension Name:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Citizenship:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Age:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Height:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Gender:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Weight:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Mobile Number:<form><input type="text" name="usrname"></form></td>
-
-                                                    <td class ="question">Email:<form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-
-                                            </table>
-                                            <hr />
-
-                                            <h4>Family Background</h4>
-                                            <table>
-                                                <tr>
-                                                    <td class ="question">Spouse's Name:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td class ="question">Occupation:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Date of Birth:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td class ="question">Employer/BusinessName:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Business Address:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td class ="question">Telephone Number:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class ="question">Father's Name:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td class ="question">Mother's Name:<form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th>Name of Children</th>
-                                                    <th>Birthdate</th>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                            <hr />
-                                            <h4>Educational Background</h4>
-                                            <table>
-                                                <tr>
-                                                    <th>LEVEL</th>
-                                                    <th>NAME OF SCHOOL</th>
-                                                    <th>BASIC EDUCATION/DEGREE COURSE</th>
-                                                    <th>PERIOD OF ATTENDANCE</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Elementary</td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Secondary</td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                <tr>
-                                                    <td>Vocational/Trade Course</td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>College</td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Graduate Studies</td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>HIGHEST LEVEL/ UNITS EARNED</th>
-                                                    <th>YEAR GRADUATED</th>
-                                                    <th>SCHOLARSHIP/ACADEMIC HONORS RECEIVED</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" class="btn btn-success">Save</a>
-                                            <a href="#" class="btn btn-danger">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Modal Page2-->
-
-                            <div class="modal fade" id="myModalEditP2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Edit Personal Data Sheet</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="panel-body">
-                                                <h4>Civil Service Eligibility</h4>
-                                                <table>
-                                                    <tr>
-                                                        <th>CAREER SERVICE</th>
-                                                        <th>RATING</th>
-                                                        <th>DATE OF EXAMINATION</th>
-                                                        <th>PLACE OF EXAMINATION</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>LICENSE IF APPLICABLE</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-
-                                                    </tr><tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-
-                                                    </tr>
-                                                </table>
-                                            </div>
-
-                                            <hr>
-
-                                            <h4>Work Experienced</h4>
-                                            <div class="panel-body">
-                                                <table>
-                                                    <tr>
-                                                        <th>INCLUSIVE DATES</th>
-                                                        <th>POSITION TITLE</th>
-                                                        <th>DEPARTMENT/AGENCIES/OFFICE/COMPANY</th>
-                                                        <th>MONTHLY SALARY</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>SALARY JOB PAY GRADE</th>
-                                                        <th>STATUS OF APPOINTMENT</th>
-                                                        <th>GOVERNMENT SERVICE</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                        <td><form><input type="text" name="usrname"></form></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" class="btn btn-success">Save</a>
-                                            <a href="#" class="btn btn-danger">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Modal Page 3-->
-                            <div class="modal fade" id="myModalEditP3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Edit Personal Data Sheet</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4>Voluntary Work Or Involvement In Civic/ Non Government/People/Voluntary ORGANIZATION</h4>
-                                            <table>
-                                                <tr>
-                                                    <th>Name & Address of Organization</th>
-                                                    <th>Inclusive Dates</th>
-                                                    <th>Number of Hours</th>
-                                                    <th>Position</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                            <hr>
-                                            <h4>Learning And Development(L&O) Interventions/Training Programs Attended</h4>
-                                            <table>
-                                                <tr>
-                                                    <th>Title Of Learning and Development Interventions/Training Programs</th>
-                                                    <th>Inclusive Dates Of Attendance</th>
-                                                    <th>Number of Hours</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <th>Type of I.D</th>
-                                                    <th>Conducted/Sponsored by:</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                </tr>
-                                            </table>
-                                            <hr>
-                                            <h4>Other Information</h4>
-                                            <table>
-                                                <tr>
-                                                    <th>Special Skills and Hobbies</th>
-                                                    <th>Non-Academic Distinctions/Recognition</th>
-                                                    <th>Membership in association/organization</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-                                                    <td><form><input type="text" name="usrname"></form></td>
-
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" class="btn btn-success">Save</a>
-                                            <a href="#" class="btn btn-danger">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Modal Page 4-->
-                            <div class="modal fade" id="myModalEditP2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Edit Personal Data Sheet</h4>
-                                        </div>
-                                        <div class="modal-body">
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" class="btn btn-success">Save</a>
-                                            <a href="#" class="btn btn-danger">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End of Modal -->
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
         <!-- /. PAGE INNER  -->
+    </div>
     </div>
     <!-- /. PAGE WRAPPER  -->
     <!-- /. WRAPPER  -->
@@ -1292,7 +783,5 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
     </script>
     <!-- CUSTOM SCRIPTS -->
     <script src="../assets/js/custom.js"></script>
-
-
 </body>
 </html>
