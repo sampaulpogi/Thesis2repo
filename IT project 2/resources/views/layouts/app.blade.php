@@ -1,42 +1,7 @@
 <?php
-//// Start the session
-//if(!isset($_SESSION))
-//{
-//    session_start();
-//    if(isset($_SESSION['name'])){
-//        print $_SESSION['time'] - time();
-//        if ((time() - $_SESSION['time']) > 900){
-//
-//
-//// session timed out
-////        session_unset();     // unset $_SESSION variable for the run-time
-////        session_destroy();   // destroy session data in storage
-//            echo '<a href="/logout" class="btn btn-danger square-btn-adjust">Please Login</a>';
-//            return redirect()->route('logout');
-//
-//        }
-//    }else{
-//        echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
-//        return redirect()->route('logout');
-//    }
-//}else{
-//    if(isset($_SESSION['name'])){
-//        print $_SESSION['time'] - time();
-//        if ((time() - $_SESSION['time']) > 900){
-//
-//
-//// session timed out
-////        session_unset();     // unset $_SESSION variable for the run-time
-////        session_destroy();   // destroy session data in storage
-//            echo '<a href="/logout" class="btn btn-danger square-btn-adjust">Please Login</a>';
-//            return redirect()->route('logout');
-//
-//        }
-//    }else{
-//        echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
-//        return redirect()->route('logout');
-//    }}
-//?>
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>

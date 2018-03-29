@@ -35,6 +35,20 @@ body {
     min-height:1200px;
 }
 
+#page-wrapper2 {
+    padding: 15px 15px;
+    min-height: 600px;
+    background:#FFDE15;
+    width: 250%; 
+}
+
+#page-inner2 {
+    margin:15px 15px 15px 15px;
+    background-color:#fff!important;
+    padding:10px;
+    min-height:1200px;
+}
+
 .text-center {
     text-align:center;
 }
@@ -310,10 +324,8 @@ font-weight: 700;
 	
 }
 .navbar-cls-top .navbar-brand:hover {
-
-background: #C9282D;
-color:#fff;
-
+    background: #C9282D;
+    color:#fff;
 }
 
 .navbar-default {

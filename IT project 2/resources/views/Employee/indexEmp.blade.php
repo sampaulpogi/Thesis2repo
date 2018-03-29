@@ -1,6 +1,6 @@
 <?php
 // Start the session
-session_start();
+//session_start();
 if(isset($_SESSION['name'])){
     print $_SESSION['time'] - time();
     if ((time() - $_SESSION['time']) > 900){

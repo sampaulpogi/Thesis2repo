@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class trainings extends Model
+class dilg-hris extends Model
 {
-    protected $table = 'trainings';
+    //
 }

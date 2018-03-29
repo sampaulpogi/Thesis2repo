@@ -7,12 +7,12 @@ if(isset($_SESSION['name'])){
         // session timed out
 //        session_unset();     // unset $_SESSION variable for the run-time
 //        session_destroy();   // destroy session data in storage
-        echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
+        echo '<a href="/logout" class="btn btn-danger square-btn-adjust">Please Login</a>';
         return redirect()->route('logout');
 
     }
 }else{
-    echo '<a href="/logout" class="btn btn-danger square-btn-adjust">PLease Login</a>';
+    echo '<a href="/logout" class="btn btn-danger square-btn-adjust">Please Login</a>';
     return redirect()->route('logout');
 }
 ?>
@@ -24,15 +24,15 @@ if(isset($_SESSION['name'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Human Resource Information System</title>
     <!-- BOOTSTRAP STYLES-->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
-    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../assets/css/font-awesome.css" rel="stylesheet" />
     <!-- MORRIS CHART STYLES-->
 
     <!-- CUSTOM STYLES-->
-    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="../../assets/css/custom.css" rel="stylesheet" />
     <!-- TABLE STYLES-->
-    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="../../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
 <div id="wrapper">
@@ -92,17 +92,8 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
                     <div id="paper-mid">
                         <div class="entry">
                             <!-- Begin Personal Information -->
-                            <div id="self">
-                                <center><h3 class="name">{{ $employeedataf->givenname }} {{ $employeedataf->middlename }} {{ $employeedataf->lastname}}</h3></center>
-                            </div>
+                            
                             <div class="col-md-12">
-                                <br>
-                                <div style="text-align: right">
-                                    <button class="btn btn-default" ><a href="PdsOfEmp/1/edit"><i class="fa fa-edit "></i> Edit</a></button>
-                                    <button class="btn btn-default" ><a href="/download-pdf2" ><i class=" fa fa-file-text " ></i> Generate</a>
-                                    </button>
-                                </div>
-                                <br>
                                 <div class="col-md-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -129,58 +120,45 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapsePersonal" class="collapsed">Personal Information</a>
                                                             </h4>
                                                         </div>
-                                                        <div id="collapsePersonal" class="panel-collapse collapse" style="height: 0px;">
-                                                            <div class="panel-body">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class ="question">First Name:</td>
-                                                                        <td>{{ $employeedataf->givenname }}</td>
-                                                                        <td class ="question">Date of Birth:</td>
-                                                                        <td>{{ $employeedataf->dateOfBirth }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class ="question">Middle Name:</td>
-                                                                        <td>{{ $employeedataf->middlename }}</td>
-                                                                        <td class ="question">Place of Birth:</td>
-                                                                        <td>{{ $employeedataf->permanentAddressProvince }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class ="question">Last Name:</td>
-                                                                        <td>{{ $employeedataf->lastname }}</td>
-                                                                        <td class ="question">Civil Status:</td>
-                                                                        <td>{{ $employeedataf->civilStatus }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class ="question">Extension Name:</td>
-                                                                        <td>N/A</td>
-                                                                        <td class ="question">Citizenship:</td>
-                                                                        <td>{{ $employeedataf->citizenship }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class ="question">Age:</td>
-                                                                        <td><?php echo date('Y')-(int)substr($employeedataf->dateOfBirth,0,4);?></td>
-                                                                        <td class ="question">Height:</td>
-                                                                        <td>{{ $employeedataf->height }} M</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class ="question">Gender:</td>
-                                                                        <td>{{ $employeedataf->sex }}</td>
-                                                                        <td class ="question">Weight:</td>
-                                                                        <td>{{ $employeedataf->weight }} Kbs</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class ="question">Mobile Number:</td>
-                                                                        <td>{{ $employeedataf->mobileNo }}</td>
-                                                                        <td class ="question">Email:</td>
-                                                                        <td>{{ $employeedataf->emailaddress }}</td>
-                                                                    </tr>
-                                                                    <hr>
-                                                                </table>
-                                                            </div>
-                                                        </div>
+                                                        <div class="panel-body">
+                                                                <h3>Details</h3>
+                                                            First name: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="givenname" value="{{$employeedataf->givenname}}"><br><br>
+                                                            Middle name: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="middlename" value="{{$employeedataf->middlename}}"><br><br>
+                                                            Last name: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="lastname" value="{{$employeedataf->lastname}}"><br><br>
+                                                            Gender: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="sex" value="{{$employeedataf->sex}}"><br><br>
+                                                            Mobile number: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="mobileNo" value="{{$employeedataf->mobileNo}}"><br><br>
+                                                            Date of birth:  
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="dateofbirth" value="{{$employeedataf->dateOfBirth}}"><br><br>
+                                                            Place of birth: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="placeofbirth" value="{{$employeedataf->placeOfBirth}}"><br><br>
+                                                            Civil status: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="civilstatus" value="{{$employeedataf->civilStatus}}"></input><br><br>
+                                                            Citizenship: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="citizenship" value="{{$employeedataf->citizenship}}"></input><br><br>
+                                                            Height: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="height" value="{{$employeedataf->height}}"><br><br>
+                                                            Weight: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="weight" value="{{$employeedataf->weight}}"><br><br>
+                                                            Email address: 
+                                                                <br> 
+                                                                <input class="col-md-6 col-sm-12" type="text" name="emailaddress" value="{{$employeedataf->emailaddress}}"><br><br>
                                                     </div>
-
-                                                    <hr />
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading">
                                                             <h4 class="panel-title">
@@ -479,7 +457,7 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
 
                                                 <!---End Of Page3 -->
 
-                                                <d  iv class="tab-pane fade" id="page4">
+                                                <div class="tab-pane fade" id="page4">
                                                     <h4>PDS Questionaire</h4>
                                                     <table>
                                                         <td>1.) Are you related by consanguinity or affinity to the appointing or recommending authority, or the chief of bureau or office to the person who has immediate supervision over you in the office Bureau or Department where you will be appointed,</td>
@@ -656,10 +634,6 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
                                                         <a href="#page2" data-toggle="tab" class="btn btn-default btn-sm">2</a>
                                                         <a href="#page3" data-toggle="tab" class="btn btn-default btn-sm">3</a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <!-- Action modal -->
                                     <div class="modal fade" id="myModalAction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -750,6 +724,9 @@ font-size: 16px;"> Today: <?php echo date("M d, Y")?> <a href="/logout" class="b
                                                     <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                             </div>
                                         </div>
                                     </div>
