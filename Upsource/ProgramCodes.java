@@ -421,6 +421,30 @@ public class PerimeterOfSquaresInRectangle {
 
 
 
+public class JosephusSurvivor {
+	public int josephusSurvivor(final int n, final int k) {
+		if (n == 1)
+			return 1;
+			else
+				return (josephusSurvivor(n - 1, k) + k-1) % n + 1;
+	}
+	public  void main(String[] args) throws IOException{
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+			String[] input = new String[2];
+			int n;
+			int k;
+			input = in.readLine().split(" ");
+
+			n = Integer.parseInt(input[0]);
+			k = Integer.parseInt(input[1]);
+			System.out.println(josephusSurvivor(n, k));
+  }
+}
+
+
+
+
 
 
 }
