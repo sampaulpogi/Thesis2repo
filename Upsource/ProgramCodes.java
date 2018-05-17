@@ -331,6 +331,20 @@ public class TheClockwiseSpiral {
 
 
 
+public class DoubleCola {
+   public String WhoIsNext(String[] names, int n) {
+      int nextIteration = 5, iterations = 1;
+      while (n - nextIteration > 0) {
+            n -= nextIteration;
+            nextIteration *= 2;
+            iterations *= 2;
+      }
+      return names [(n - 1) / iterations];
+
+      }
+}
+
+
 
 
 
