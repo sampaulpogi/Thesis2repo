@@ -231,6 +231,26 @@ public class PrimeIneNumbers {
 
 
 
+public class ProductOfConsecutiveFibNumbers { // must be public for codewars
+
+  public long[] productFib(long prod) {
+    // your code
+    long x=0;
+    long y=1;
+    while(x*y<prod) {
+      y = x+y;
+      x = y-x;
+    }
+    if(x*y == prod) {
+      return new long[] {x, y, 1};
+    } else {
+      return new long[] {x, y, 0};
+    }
+  }
+}
+
+
+
 
 
 
