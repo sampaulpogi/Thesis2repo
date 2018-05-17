@@ -128,5 +128,49 @@ public class MergedStringCheck{
 
 }
 
+public class PaginationHelper<I> {
+    private final List<I> collection;
+    private final int itemsPerPage;
+
+    public PaginationHelper(List<I> collection, int itemsPerPage) {
+        this.collection = collection;
+        this.itemsPerPage = itemsPerPage;
+   }
+
+   public int itemCount() {
+        return this.collection.size();
+   }
+
+    public int pageCount() {
+        if (this.itemsPerPage == 0 || this.collection.size() == 0) {
+            return 0;
+        }
+
+       return this.collection.size() / this.itemsPerPage + 1;
+    }
+
+    public int pageItemCount(int pageIndex) {
+       if (pageIndex >= this.pageCount()) {
+            return -1;
+        }
+
+       if (pageIndex < this.pageCount() - 1) {
+          return this.itemsPerPage;
+        }
+
+        return this.collection.size() - this.itemsPerPage * pageIndex;
+    }
+
+    public int pageIndex(int itemIndex) {
+        if (itemIndex >= this.collection.size() || itemIndex < 0) {
+           return -1;
+        }
+
+        return itemIndex / this.itemsPerPage;
+    }
+}
+
+
+
 
 }
