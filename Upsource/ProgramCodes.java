@@ -444,7 +444,26 @@ public class JosephusSurvivor {
 
 
 
+public class NumberOfTrailingZerosOfN {
+     int zeros(int n){
+        int count=0;
+
+        for (int i=5; n/i>=1; i *= 5)
+            count += n/i;
+
+        return count;
+    }
+
+    public  void main (String[] args) {
+    	Scanner kbd=new Scanner(System.in);
+        int n = kbd.nextInt();
+        System.out.println("Number of trailing zeros in "+ n +" is "
+                                    + zeros(n));
+    	}
+	}
 
 
 
+
+}
 }
