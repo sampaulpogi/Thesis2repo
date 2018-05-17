@@ -193,6 +193,27 @@ public class DirectionReduction {
 
 
 
+public class Scramblies {
+
+    public boolean scramble(String str1, String str2) {
+
+        // your code
+        for(int i = 0; i<str2.length(); i++){
+            if(!str1.contains(""+str2.charAt(i))){
+                return false;
+            }else{
+                str1 = str1.replaceFirst(""+str2.charAt(i), "");
+            }
+
+        }
+
+        return true;
+    }
+}
+
+
+
+
 
 
 
