@@ -170,6 +170,29 @@ public class PaginationHelper<I> {
     }
 }
 
+public class DirectionReduction {
+    public String[] dirReduc(String[]args) {
+        // Your code here.
+        String strDirc = "";
+
+        for(int i = 0; i<args.length; i++){
+            strDirc = strDirc+","+args[i];
+            strDirc = strDirc.replace(",EAST,WEST", "")
+            .replace(",WEST,EAST", "")
+            .replace(",SOUTH,NORTH", "")
+            .replace(",NORTH,SOUTH", "");
+
+        }
+
+        return strDirc.length()==0?new String[]{} : strDirc.substring(1).split(",");
+
+
+    }
+}
+
+
+
+
 
 
 
